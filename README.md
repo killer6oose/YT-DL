@@ -4,23 +4,27 @@ A simple web application totally not for downloading YouTube videos and audio us
 
 ## 🚀 Installation & Setup
 
-### **1⃣ Install Node.js (if not installed)**
+### **1 - Install Node.js (if not installed)**
 Download and install **Node.js 16+** from [nodejs.org](https://nodejs.org/).
 
-### **2⃣ Clone the Repository**
+### **2 - Clone the Repository**
 ```bash
-git clone https://github.com/killer6oose/ctech-ytdl.git
-cd YtDlpWebApp
+git clone https://github.com/killer6oose/YT-DL.git
+cd YT-DL
 ```
 
-### **3⃣ Install Dependencies**
+### **3 - Install Dependencies**
 ```bash
 npm install
 ```
 
-### **4⃣ Setup Environment Variables**
-Create a `.env` file in the project root and add:
+### **4 - Setup Environment Variables**
+Create a `.env` file (or copy the `.env.example` to a `.env` and update) in the project root and add:
 ```
+# Server Configuration
+PORT=3000
+SESSION_SECRET={GENERATE YOUR OWN!}
+
 RECAPTCHA_SITE_KEY=your-site-key
 RECAPTCHA_SECRET_KEY=your-secret-key
 GRAPH_TENANT_ID=your-tenant-id
@@ -29,7 +33,7 @@ GRAPH_CLIENT_SECRET=your-client-secret
 GRAPH_MAILBOX=your-email@example.com
 ```
 
-### **5⃣ Run the Application**
+### **5 - Run the Application**
 ```bash
 npm start
 ```
@@ -38,15 +42,14 @@ or run in development mode:
 npm run dev
 ```
 
-### **6⃣ Access the WebApp**
+### **6 - Access the WebApp**
 Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
 ## **🛀 Project Structure**
 ```
-YtDlpWebApp/
-│—— downloads/              # Folder for downloaded files (ignored in Git)
+ctech-ytdl/
 │—— public/                 # Public static files (HTML, CSS, JS)
 │—— views/                  # (Optional) Views if using a templating engine
 │—— node_modules/           # Installed dependencies (ignored in Git)
@@ -76,6 +79,7 @@ Run it with:
 chmod +x setup.sh
 ./setup.sh
 ```
+##### This script exists in the project root already!
 
 ### **Windows Setup Script**
 Create `setup.bat`:
@@ -89,13 +93,13 @@ Run it with:
 ```bat
 setup.bat
 ```
+##### This script exists in the project root already!
 
 ---
 
-## **7⃣ One-Command Installation for Users**
-After you've packaged the project, anyone can install it with:
+## **7 - One-Command Installation for Users**
 ```bash
-git clone https://github.com/YOUR-USERNAME/YtDlpWebApp.git && cd YtDlpWebApp && npm install
+git clone https://github.com/killer6oose/YT-DL.git && cd YT-DL && npm install
 ```
 And start it with:
 ```bash
@@ -108,7 +112,7 @@ npm start
 If you want to run the app persistently in production, install `pm2`:
 ```bash
 npm install -g pm2
-pm2 start app.js --name yt-dlp-webapp
+pm2 start app.js --name yt-dl
 pm2 save
 pm2 startup
 ```
