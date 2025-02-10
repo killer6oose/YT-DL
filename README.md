@@ -2,6 +2,21 @@
 
 A simple web application totally not for downloading YouTube videos and audio using `yt-dlp` and `Node.js`.
 
+## 🔹 Prerequisites
+- **Ensure Python is installed** before running `npm install`.
+- To install Python:
+  - **Ubuntu/Debian:** `sudo apt install -y python3 python3-pip`
+  - **CentOS/RHEL:** `sudo yum install -y python3 python3-pip`
+  - **Arch Linux:** `sudo pacman -S python python-pip`
+- If `npm install` still fails, ensure Python is in your `$PATH` by running:
+```bash
+which python3
+```
+- If Python is missing  
+```bash
+sudo ln -s $(which python3) /usr/bin/python
+```
+
 ## 🚀 Installation & Setup
 
 ### **1 - Install Node.js (if not installed)**
