@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not A YouTube Downloader - Contact</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('background.jpg');
+            background-size: cover; /* Ensure it stretches */
+            background-repeat: no-repeat; /* Prevent tiling */
+            background-position: center center; /* Center the image */
+            background-attachment: fixed; /* Keep it fixed even when scrolling */
+            color: var(--text-color, #ffffff);
+            transition: background 0.5s ease-in-out;
+        }
+
+        /* Container */
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            transition: background 0.5s ease-in-out;
+        }
+        .hidden {
+            display: none;
+        }
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .success-message {
+            color: white;
+            background: green;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 8px;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 2px solid black;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+            .header h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+
+            .header .nav-links {
+                display: flex;
+                gap: 10px;
+            }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: slateblue;
+            transition: 0.3s ease-in-out;
+        }
+
+            .nav-btn:hover {
+                background: darkslateblue;
+            }
+
+            .nav-btn.active {
+                background: darkorchid;
+            }
+
+        /* Authentication Buttons */
+        .auth-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-login {
+            background: violet;
+        }
+
+            .btn-login:hover {
+                background: orchid;
+            }
+
+        .btn-logout {
+            background: crimson;
+            display: none;
+        }
+
+            .btn-logout:hover {
+                background: darkred;
+            }
+
+        .btn-account {
+            background: mediumseagreen;
+            display: none;
+        }
+
+            .btn-account:hover {
+                background: seagreen;
+            }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-btn, .auth-btn {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎵 Definitely Not A YouTube Downloader 🎥</h1>
+        <div class="nav-links">
+            <a href="index.html" class="nav-btn" id="homeBtn">Home</a>
+            <a href="account.html" class="nav-btn" id="accountBtn">My Account</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+            <button id="loginBtn" class="auth-btn btn-login" data-bs-toggle="modal" data-bs-target="#authModal">Login</button>
+            <button id="logoutBtn" class="auth-btn btn-logout">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+
+        <!-- Success Message (Initially Hidden) -->
+        <div id="successMessage" class="success-message hidden">
+            Your message was successfully sent!
+        </div>
+
+        <!-- Contact Form -->
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="form-control" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="form-control" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" class="form-control" rows="5" required></textarea>
+
+            <div class="mt-3">
+                <label>Captcha: (pst! It's in the background!)</label>
+                <div id="captchaContainer"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">Send Message</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 | Made with ♥️ - <a href="https://cronotech.us" target="_blank" style="color: violet; text-decoration: solid;">CronoTech Consulting</a></p>
+        <p>
+            <a href="terms.html" style="color: white; text-decoration: underline;">Terms & Conditions</a> |
+            <a href="privacy.html" style="color: white; text-decoration: underline;">Privacy Policy</a>
+        </p>
+    </div>
+    <!-- Authentication Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <!-- Apply Bootstrap classes -->
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <input type="text" id="loginUsername" class="form-control mb-2" placeholder="Username" required>
+                        <input type="password" id="loginPassword" class="form-control mb-2" placeholder="Password" required>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <button type="button" class="btn btn-secondary w-100 mt-2" id="openRegisterBtn">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <!-- Apply Bootstrap classes -->
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <input type="text" id="registerName" class="form-control mb-2" placeholder="Full Name" required>
+                        <input type="text" id="registerUsername" class="form-control mb-2" placeholder="Username" required>
+                        <input type="email" id="registerEmail" class="form-control mb-2" placeholder="Email" required>
+                        <input type="password" id="registerPassword" class="form-control mb-2" placeholder="Password" required>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="button" class="btn btn-secondary w-100 mt-2" id="backToLogin">Back to Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="contact.js"></script>
+    <script>
+        fetch('/recaptcha-key')
+            .then(response => response.json())
+            .then(data => {
+                const recaptchaScript = document.createElement('script');
+                recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${data.siteKey}`;
+                recaptchaScript.async = true;
+                recaptchaScript.defer = true;
+                document.head.appendChild(recaptchaScript);
+            })
+            .catch(error => console.error('Failed to fetch reCAPTCHA site key:', error));
+        async function checkLoginStatus() {
+            const response = await fetch("/check-auth");
+            const data = await response.json();
+
+            if (data.loggedIn) {
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("accountBtn").style.display = "inline-block";
+                document.getElementById("logoutBtn").style.display = "inline-block";
+            } else {
+                document.getElementById("loginBtn").style.display = "inline-block";
+                document.getElementById("accountBtn").style.display = "none";
+                document.getElementById("logoutBtn").style.display = "none";
+            }
+        }
+
+        document.getElementById("logoutBtn").addEventListener("click", async () => {
+            await fetch("/logout");
+            checkLoginStatus();
+        });
+
+        checkLoginStatus(); // Run on page load
+
+    </script>
+    <script>document.body.classList.add('with-bg');</script>
+
+</body>
+</html>

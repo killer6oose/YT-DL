@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub | Your Website</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Default dark background */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color, #121212);
+            background-size: cover; /* Ensure it stretches */
+            background-repeat: no-repeat; /* Prevent tiling */
+            background-position: center center; /* Center the image */
+            background-attachment: fixed; /* Keep it fixed even when scrolling */
+            color: var(--text-color, #ffffff);
+            transition: background 0.5s ease-in-out;
+        }
+            /* Dynamic Background */
+            body.with-bg {
+                background: url('../background.jpg') no-repeat center center/cover;
+            }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 2px solid black;
+        }
+
+            .header h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+
+            .header .nav-links {
+                display: flex;
+                gap: 10px;
+            }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: slateblue;
+            transition: 0.3s ease-in-out;
+        }
+
+            .nav-btn:hover {
+                background: darkslateblue;
+            }
+
+        /* Game Container */
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .game-tile {
+            width: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+
+            .game-tile:hover {
+                transform: scale(1.05);
+            }
+
+            .game-tile img {
+                width: 100%;
+                height: auto;
+            }
+
+        .game-title {
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            background: #222;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .game-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .game-tile {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🎮 Game Hub 🎮</h1>
+        <div class="nav-links">
+            <a href="/" class="nav-btn">Home</a>
+            <a href="/games/" class="nav-btn active">Games</a>
+            <a href="/account.html" class="nav-btn">My Account</a>
+            <a href="/contact.html" class="nav-btn">Contact</a>
+        </div>
+    </div>
+
+    <h1 style="text-align:center; margin-top:20px;">Welcome to the Game Hub!</h1>
+    <p style="text-align:center;">Choose a game below and have fun!</p>
+    <p style="text-align:center;">They play right here on our website, no need to download anything to cure that boredom</p>
+
+
+    <div class="game-container">
+        <a href="2048/" class="game-tile">
+            <img src="thumbnails/2048.png" alt="2048 Game">
+            <div class="game-title">2048</div>
+        </a>
+
+        <a href="floppybird/" class="game-tile">
+            <img src="thumbnails/flappy-bird.png" alt="Flappy Bird">
+            <div class="game-title">Flappy Bird</div>
+        </a>
+
+        <a href="pacman/" class="game-tile">
+            <img src="thumbnails/pacman.png" alt="Pac-Man">
+            <div class="game-title">Pac-Man</div>
+        </a>
+
+    </div>
+    <div class="game-container">
+        <a href="snake/" class="game-tile">
+            <img src="thumbnails/snake.png" alt="Snake">
+            <div class="game-title">Classic Snake</div>
+        </a>
+
+        <a href="breakout/" class="game-tile">
+            <img src="thumbnails/breakout.jpg" alt="Blaster Breakout">
+            <div class="game-title">Blaster Breakout</div>
+        </a>
+
+        <a href="minesweeper/" class="game-tile">
+            <img src="thumbnails/minesweeper.jpg" alt="Minesweeper">
+            <div class="game-title">Minesweeper</div>
+        </a>
+    </div>
+    <script>
+        document.body.classList.add('with-bg');
+
+    </script>
+</body>
+</html>

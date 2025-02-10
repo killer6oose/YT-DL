@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Grumpy</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Default dark background */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color, #121212);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            color: var(--text-color, #ffffff);
+            transition: background 0.5s ease-in-out;
+        }
+
+            /* Dynamic Background */
+            body.with-bg {
+                background: url('background.jpg') no-repeat center center/cover;
+            }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+
+            .header h1 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .header img {
+                display: block;
+                margin: 0 auto; /* Centers image */
+                max-width: 350px;
+                height: auto;
+            }
+
+        /* Container */
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            transition: background 0.5s ease-in-out;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+            .footer a {
+                color: white;
+                text-decoration: underline;
+            }
+
+        /* Submit Button */
+        .btn-danger {
+            background: crimson;
+            border: none;
+        }
+
+            .btn-danger:hover {
+                background: darkred;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Oh no! You don't like this site.</h1>
+        <img src="https://media2.giphy.com/media/L95W4wv8nnb9K/giphy.gif" alt="Grumpy GIF">
+    </div>
+
+    <div class="container">
+        <h3>Send Us Your Thoughts</h3>
+        <form id="grumpyForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="form-control" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="form-control" required>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" class="form-control" value="I'm grumpy you're allowing me free stuff!" readonly>
+
+            <label for="message">Message:</label>
+            <textarea id="message" class="form-control" rows="5" required></textarea>
+
+            <button type="submit" class="btn btn-danger w-100 mt-3">Send Message</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 | Made without ♥️ for you, I guess - <a href="https://cronotech.us" target="_blank">CronoTech Consulting</a></p>
+        <p>
+            <a href="terms.html">Terms & Conditions</a> |
+            <a href="privacy.html">Privacy Policy</a>
+        </p>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const nameField = document.getElementById("name");
+            const emailField = document.getElementById("email");
+            const messageField = document.getElementById("message");
+            const grumpyForm = document.getElementById("grumpyForm");
+
+            // Fetch the reCAPTCHA site key from the backend
+            let recaptchaSiteKey;
+            try {
+                const recaptchaResponse = await fetch("/recaptcha-key");
+                const recaptchaData = await recaptchaResponse.json();
+                recaptchaSiteKey = recaptchaData.siteKey;
+            } catch (error) {
+                console.error("Error fetching reCAPTCHA site key:", error);
+                return;
+            }
+
+            grumpyForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                grecaptcha.ready(async function () {
+                    try {
+                        const token = await grecaptcha.execute(recaptchaSiteKey, { action: "submit" });
+
+                        const formData = {
+                            name: nameField.value,
+                            email: emailField.value,
+                            message: messageField.value,
+                            recaptchaToken: token
+                        };
+
+                        const response = await fetch("/send-grumpy-message", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(formData),
+                        });
+
+                        const result = await response.json();
+                        if (result.success) {
+                            window.location.href = "redirecting-away.html";
+                        } else {
+                            alert("reCAPTCHA verification failed. Try again.");
+                        }
+                    } catch (err) {
+                        console.error("❌ reCAPTCHA execution failed:", err);
+                        alert("reCAPTCHA error, please try again.");
+                    }
+                });
+            });
+
+            document.body.classList.add('with-bg');
+        });
+    </script>
+
+</body>
+</html>

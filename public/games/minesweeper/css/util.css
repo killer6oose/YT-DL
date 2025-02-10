@@ -1,0 +1,76 @@
+:root {
+  --primary: #4040c2;
+  --secondary: #464646;
+  --gray-100: #f3f4f6;
+  --gray-400: #cbd5e1;
+  --cyan-50: #ecfeff;
+  --white-50: #fdfdfd;
+  --slate-400: #94a3b8;
+  --easy: #2dd4bf;
+  --medium: #818cf8;
+  --hard: #f87171;
+  --success: #edf7ed;
+  --danger: #fdeded;
+  --active: #5eead4;
+  --circle-bg: #0000000a;
+  --font-number: 'Roboto Mono', monospace;
+  --font-regular: 'Roboto', sans-serif;
+  --transition-time: 0.3s;
+}
+
+.text-sm {
+  font-size: 0.7rem;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
+
+  font-weight: 400;
+  border: 1px solid var(--secondary);
+  border-radius: 0.4em;
+  background-color: var(--white-50);
+  cursor: pointer;
+  transition: var(--transition-time);
+}
+
+.btn:hover {
+  color: var(--white-50);
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex.flex-col {
+  flex-direction: column;
+}
+
+.gap-1 {
+  gap: 0.5rem;
+}
+
+.gap-2 {
+  gap: 1rem;
+}
+
+.gap-3 {
+  gap: 1.5rem;
+}
+
+.gap-4 {
+  gap: 2.5rem;
+}
+
+.gap-5 {
+  gap: 3rem;
+}
+
+.c-pointer {
+  cursor: pointer;
+}

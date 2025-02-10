@@ -1,0 +1,80 @@
+        <style>
+            .header .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+            .footer a {
+                color: white;
+                text-decoration: underline;
+            }
+        /* Page Navigation Buttons */
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: slateblue;
+            transition: 0.3s ease-in-out;
+        }
+
+            .nav-btn:hover {
+                background: darkslateblue;
+            }
+
+            .nav-btn.active {
+                background: darkorchid;
+            }
+
+        /* Auth Buttons */
+        .auth-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-login {
+            background: violet;
+        }
+
+            .btn-login:hover {
+                background: orchid;
+            }
+
+        .btn-logout {
+            background: crimson;
+            display: none;
+        }
+
+            .btn-logout:hover {
+                background: darkred;
+            }
+
+        .btn-account {
+            background: mediumseagreen;
+            display: none;
+        }
+
+            .btn-account:hover {
+                background: seagreen;
+            }
+        </style>
+<div class="header">
+    <h1>🎮 Game Hub 🎮</h1>
+    <div class="nav-links">
+        <a href="/" class="nav-btn">Home</a>
+        <a href="/games/" class="nav-btn active">Games</a>
+        <a href="/account.html" class="nav-btn">My Account</a>
+        <a href="/contact.html" class="nav-btn">Contact</a>
+    </div>
+</div>

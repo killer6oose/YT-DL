@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/4dcde2782e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <title>Minesweeper</title>
+  </head>
+  <body onload="initGame()">
+    <section class="main-container flex flex-col">
+      <main class="main-container flex flex-col gap-2">
+        <div class="btn-group flex gap-1">
+          <button class="btn-level btn-easy" onclick="setLevel(4)">Easy (4 x 4)</button>
+          <button class="btn-level btn-medium" onclick="setLevel(8)">Medium (8 x 8)</button>
+          <button class="btn-level btn-hard" onclick="setLevel(12)">Hard (12 x 12)</button>
+          <div class="btn btn-boom" onclick="toggle7Boom()">7 BOOM</div>
+        </div>
+
+        <div class="control-panel flex flex-col">
+          <div class="container flex gap-5">
+            <div class="flex flex-col gap-1">
+              <div class="flex flex-col">
+                <p class="text-sm">Hints</p>
+                <div class="hints c-pointer" onclick="toggleHintMode()"></div>
+              </div>
+              <div class="flex flex-col">
+                <p class="text-sm">Timer</p>
+                <div class="timer">
+                  <span class="minutes">00</span>:<span class="seconds">00</span>
+                </div>
+              </div>
+            </div>
+            <div class="smiley" onclick="initGame()"></div>
+            <div class="flex flex-col gap-1">
+              <div class="flex flex-col">
+                <p class="text-sm">Safe clicks</p>
+                <div class="safe-clicks c-pointer" onclick="toggleSafeMode()"></div>
+              </div>
+              <div class="flex flex-col">
+                <p class="text-sm">Lives</p>
+                <span class="lives flex"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table>
+          <tbody class="board"></tbody>
+        </table>
+      </main>
+
+      <footer class="main-footer">
+        <p>Made by Avior Kahalani &copy; 2022</p>
+      </footer>
+    </section>
+
+    <div class="alert">
+      <div class="msg"></div>
+      <button class="btn-alert" onclick="closeAlert()">
+        <span class="icon-close flex"><i class="fas fa-times"></i></span>
+      </button>
+    </div>
+
+    <script src="js/util.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
